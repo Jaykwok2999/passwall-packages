@@ -13,7 +13,7 @@ on:
 
 jobs:
   Update:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: Clone Repository
       uses: actions/checkout@v4
@@ -34,40 +34,31 @@ jobs:
     - name: Update
       run: |
 
-        rm -rf ./*
+        rm -rf ./chinadns-ng
+        rm -rf ./dns2socks
+        rm -rf ./geoview
+        rm -rf ./hysteria
+        rm -rf ./ipt2socks
+        rm -rf ./microsocks
+        rm -rf ./naiveproxy
+        rm -rf ./shadowsocks-libev
+        rm -rf ./shadowsocks-rust
+        rm -rf ./shadowsocksr-libev
+        rm -rf ./simple-obfs
+        rm -rf ./sing-box
+        rm -rf ./tcping
+        rm -rf ./trojan-plus
+        rm -rf ./tuic-client
+        rm -rf ./v2ray-geodata
+        rm -rf ./v2ray-plugin
+        rm -rf ./xray-core
+        rm -rf ./xray-plugin
         
         
          
-        git clone https://github.com/Jaykwok2999/istoreos-ipk.git ./tmp
+        git clone https://github.com/xiaorouji/openwrt-passwall-packages.git ./tmp
         mv ./tmp/* ./
         rm -rf ./tmp
-        rm -rf ./linkease
-        rm -rf ./luci-app-adguardhome
-        rm -rf ./luci-app-autotimeset
-        rm -rf ./ddns-go
-        rm -rf ./luci-app-ddns-go
-        rm -rf ./luci-app-idns
-        rm -rf ./luci-app-dnsfilter
-        rm -rf ./luci-app-easymesh
-        rm -rf ./luci-app-ikoolproxy
-        rm -rf ./luci-app-iperf3-server
-        rm -rf ./luci-app-kodexplorer
-        rm -rf ./luci-app-mac
-        rm -rf ./luci-app-nat6-helper
-        rm -rf ./luci-app-netdata
-        rm -rf ./luci-app-oled
-        rm -rf ./luci-app-onliner
-        rm -rf ./msd_lite
-        rm -rf ./op-daed
-        rm -rf ./op-fileBrowser
-        rm -rf ./op-homebox
-        rm -rf ./op-mosdns
-        rm -rf ./patch
-        rm -rf ./theme
-        rm -rf ./tailscale
-        rm -rf ./pdnsd-alt
-        
-        
         
     - name: Apply
       run: |
