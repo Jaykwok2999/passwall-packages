@@ -38,7 +38,7 @@ jobs:
         
         
          
-        git https://github.com/zijieKwok/istoreos-ipk.git ./tmp
+        git clone https://github.com/Jaykwok2999/istoreos-ipk.git ./tmp
         mv ./tmp/* ./
         rm -rf ./tmp
         rm -rf ./linkease
@@ -66,7 +66,7 @@ jobs:
         rm -rf ./theme
         rm -rf ./tailscale
         rm -rf ./pdnsd-alt
-        rm -rf ./.github
+        
         
         
     - name: Apply
