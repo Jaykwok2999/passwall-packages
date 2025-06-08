@@ -1,0 +1,85 @@
+name: Update.passwall-packages
+on: 
+  repository_dispatch:
+  workflow_dispatch:
+
+# 定时触发编译
+#  schedule:
+#    - cron: 0 */1 * * *
+
+# 点赞☆Star触发编译
+#  watch:
+#    types: [started]
+
+jobs:
+  Update:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Clone Repository
+      uses: actions/checkout@v4
+
+    - name: Set git
+      run : |
+        git config --global user.email "194788255+Jaykwok2999@users.noreply.github.com"
+        git config --global user.name "Jaykwok2999"
+        sudo timedatectl set-timezone "Asia/Shanghai"
+
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@main
+      continue-on-error: true
+      with:
+        retain_days: 1
+        keep_minimum_runs: 0  
+        
+    - name: Update
+      run: |
+
+        rm -rf ./*
+        
+        
+         
+        git https://github.com/zijieKwok/istoreos-ipk.git ./tmp
+        mv ./tmp/* ./
+        rm -rf ./tmp
+        rm -rf ./linkease
+        rm -rf ./luci-app-adguardhome
+        rm -rf ./luci-app-autotimeset
+        rm -rf ./ddns-go
+        rm -rf ./luci-app-ddns-go
+        rm -rf ./luci-app-idns
+        rm -rf ./luci-app-dnsfilter
+        rm -rf ./luci-app-easymesh
+        rm -rf ./luci-app-ikoolproxy
+        rm -rf ./luci-app-iperf3-server
+        rm -rf ./luci-app-kodexplorer
+        rm -rf ./luci-app-mac
+        rm -rf ./luci-app-nat6-helper
+        rm -rf ./luci-app-netdata
+        rm -rf ./luci-app-oled
+        rm -rf ./luci-app-onliner
+        rm -rf ./msd_lite
+        rm -rf ./op-daed
+        rm -rf ./op-fileBrowser
+        rm -rf ./op-homebox
+        rm -rf ./op-mosdns
+        rm -rf ./patch
+        rm -rf ./theme
+        rm -rf ./tailscale
+        rm -rf ./pdnsd-alt
+        rm -rf ./.github
+        
+        
+    - name: Apply
+      run: |
+        Emoji=("🎉" "🤞" "✨" "🎁" "🎈" "🎄" "🎨" "💋" "🍓" "🍕" "🍉" "💐" "🌴" "🚀" "🛸" "🗽" "⛅" "🌈" "🔥" "⛄" "🐶" "🏅" "🦄" "🐤")
+        git add .
+        git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]} Sync $(date +%Y-%m-%d" "%H:%M:%S)"
+        for pkg in $(git diff-tree --no-commit-id --name-only HEAD); do
+          if [ "$(grep "PKG_RELEASE" $pkg/Makefile)" ]; then
+            sed -i "s/PKG_RELEASE:=.*/PKG_RELEASE:=$(git rev-list --count main $pkg)/" $pkg/Makefile || true
+          fi
+        done
+        git reset --soft HEAD^
+        git add .
+        git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]} Sync $(date +%Y-%m-%d" "%H:%M:%S)"
+        git push -f
