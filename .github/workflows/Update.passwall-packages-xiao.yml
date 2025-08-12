@@ -34,6 +34,7 @@ jobs:
     - name: packages
       run: |
 
+        rm -rf ./chinadns-ng
         rm -rf ./dns2socks
         rm -rf ./geoview
         rm -rf ./hysteria
@@ -59,7 +60,7 @@ jobs:
         git clone https://github.com/xiaorouji/openwrt-passwall-packages.git ./tmp
         mv ./tmp/* ./
         rm -rf ./tmp
-        rm -rf ./chinadns-ng
+        cp -af ./.github/chinadns-ng/Makefile chinadns-ng
         
     - name: Apply
       run: |
