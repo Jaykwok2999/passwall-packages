@@ -56,9 +56,25 @@ jobs:
         
         
          
-        git clone https://github.com/xiaorouji/openwrt-passwall-packages.git ./tmp
+        git clone https://github.com/kenzok8/small.git ./tmp
         mv ./tmp/* ./
         rm -rf ./tmp
+        rm -rf ./lua-neturl
+        rm -rf ./luci-app-bypass
+        rm -rf ./luci-app-fchomo
+        rm -rf ./luci-app-homeproxy
+        rm -rf ./luci-app-mosdns
+        rm -rf ./luci-app-nikki
+        rm -rf ./luci-app-openclash
+        rm -rf ./luci-app-passwall
+        rm -rf ./luci-app-passwall2
+        rm -rf ./luci-app-ssr-plus
+        rm -rf ./mihomo
+        rm -rf ./mosdns
+        rm -rf ./nikki
+        rm -rf ./v2dat
+        rm -rf ./LICENSE
+        rm -rf ./README.md
         
     - name: Apply
       run: |
