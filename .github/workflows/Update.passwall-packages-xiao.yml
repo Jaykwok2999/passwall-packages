@@ -57,9 +57,9 @@ jobs:
         
         
          
-        #git clone https://github.com/xiaorouji/openwrt-passwall-packages.git ./tmp
-        #mv ./tmp/* ./
-        #rm -rf ./tmp
+        git clone https://github.com/xiaorouji/openwrt-passwall-packages.git ./tmp
+        mv ./tmp/* ./
+        rm -rf ./tmp
         #cp -af ./.github/chinadns-ng/Makefile chinadns-ng
         
     - name: Apply
