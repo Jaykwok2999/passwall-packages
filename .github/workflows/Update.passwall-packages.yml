@@ -77,10 +77,10 @@ jobs:
         rm -rf ./luci-app-nikki
         rm -rf ./luci-app-openclash
         rm -rf ./luci-app-passwall
-        #rm -rf ./luci-app-momo
+        rm -rf ./luci-app-momo
         rm -rf ./luci-app-passwall2
         rm -rf ./luci-app-ssr-plus
-        #rm -rf ./momo
+        rm -rf ./momo
         rm -rf ./mihomo
         rm -rf ./mosdns
         rm -rf ./nikki
