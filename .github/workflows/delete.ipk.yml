@@ -34,7 +34,7 @@ jobs:
     - name: delete
       run: |
 
-        rm -rf ./luci-app-momo
+        rm -rf ./*
         
         
          
