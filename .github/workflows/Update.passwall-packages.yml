@@ -37,7 +37,9 @@ jobs:
         rm -rf ./brook
         rm -rf ./chinadns-ng
         rm -rf ./dns2socks
+        rm -rf ./dns2socks-rust
         rm -rf ./dns2tcp
+        rm -rf ./geoview
         rm -rf ./gn
         rm -rf ./hysteria
         rm -rf ./ipt2socks
