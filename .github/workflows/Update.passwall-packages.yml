@@ -1,5 +1,11 @@
 name: Update.passwall-packages
-jobs:
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    schedule:
+    - cron: "0 */4 * * *"
+env:
+  TZ: Asia/Shanghaijobs:
   Update:
     runs-on: ubuntu-latest
     steps:
