@@ -5,7 +5,9 @@ on:
     schedule:
     - cron: "0 */4 * * *"
 env:
-  TZ: Asia/Shanghaijobs:
+  TZ: Asia/Shanghai
+
+jobs:
   Update:
     runs-on: ubuntu-latest
     steps:
