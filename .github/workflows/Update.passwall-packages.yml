@@ -1,9 +1,16 @@
 name: Update.passwall-packages
-on:
+on: 
   repository_dispatch:
   workflow_dispatch:
-    schedule:
-    - cron: "0 */4 * * *"
+
+# 定时触发编译
+#  schedule:
+#    - cron: 0 22 * * *
+
+# 点赞☆Star触发编译
+#  watch:
+#    types: [started]
+
 env:
   TZ: Asia/Shanghai
 
