@@ -51,6 +51,7 @@ jobs:
         # rm -rf ./pdnsd-alt
         # rm -rf ./redsocks2
         rm -rf ./shadow-tls
+        rm -rf ./shadowsocks-libev
         rm -rf ./shadowsocks-rust
         rm -rf ./shadowsocksr-libev
         rm -rf ./simple-obfs
