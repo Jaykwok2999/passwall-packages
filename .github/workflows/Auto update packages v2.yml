@@ -348,8 +348,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "${{ matrix.pakcages }}: update to ${{ steps.update.outputs.version }}"
-          committer: smallprogram <smallprogram@foxmail.com>
-          author: smallprogram <smallprogram@foxmail.com>
+          committer: Jaykwok2999 <194788255+Jaykwok2999@users.noreply.github.com>
+          author: Jaykwok2999 <194788255+Jaykwok2999@users.noreply.github.com>
           signoff: false
           branch: patches-${{ matrix.pakcages }}-${{ steps.update.outputs.version }}
           base: main
