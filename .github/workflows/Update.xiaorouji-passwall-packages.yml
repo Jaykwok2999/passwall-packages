@@ -72,7 +72,7 @@ jobs:
         
         
          
-        https://github.com/xiaorouji/openwrt-passwall-packages.git ./tmp
+        git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git ./tmp
         mv ./tmp/* ./
         rm -rf ./tmp
         
