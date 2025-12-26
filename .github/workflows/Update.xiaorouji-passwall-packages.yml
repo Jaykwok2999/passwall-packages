@@ -1,37 +1,92 @@
-name: 功能请求
-description: 为此项目提出关于新功能的想法
-title: "[Feature Request]: "
-labels: enhancement
+name: Update.xiaorouji-passwall-packages
+on: 
+  repository_dispatch:
+  workflow_dispatch:
 
-body:
-  - type: textarea
-    id: description
-    attributes:
-      label: 描述你想要的新功能
-      description: 尽可能简单清晰地描述你想要的新功能或是希望解决的问题
-    validations:
-      required: true
+# 定时触发编译
+#  schedule:
+#    - cron: 0 22 * * *
 
-  - type: textarea
-    id: ideal-solution
-    attributes:
-      label: 描述你想要的解决方案
-      description: 尽可能简单清晰地描述你想要的新功能
-    validations:
-      required: true
+# 点赞☆Star触发编译
+#  watch:
+#    types: [started]
 
-  - type: textarea
-    id: other-solutions
-    attributes:
-      label: 描述你考虑过的替代方案
-      description: 尽可能简单清晰地描述你考虑过的任何替代解决方案或功能
-    validations:
-      required: false
+env:
+  TZ: Asia/Shanghai
 
-  - type: textarea
-    id: supplements
-    attributes:
-      label: 其他信息
-      description: 在此处添加有关功能请求的任何其他信息或屏幕截图
-    validations:
-      required: false
+jobs:
+  Update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone Repository
+      uses: actions/checkout@v4
+
+    - name: Set git
+      run : |
+        git config --global user.email "194788255+Jaykwok2999@users.noreply.github.com"
+        git config --global user.name "Jaykwok2999"
+        sudo timedatectl set-timezone "Asia/Shanghai"
+
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@main
+      continue-on-error: true
+      with:
+        retain_days: 1
+        keep_minimum_runs: 0  
+        
+    - name: Update
+      run: |
+
+        #rm -rf ./brook
+        rm -rf ./chinadns-ng
+        rm -rf ./dns2socks
+        #rm -rf ./dns2socks-rust
+        #rm -rf ./dns2tcp
+        rm -rf ./geoview
+        #rm -rf ./gn
+        rm -rf ./hysteria
+        rm -rf ./ipt2socks
+        rm -rf ./microsocks
+        rm -rf ./naiveproxy
+        # rm -rf ./pdnsd-alt
+        # rm -rf ./redsocks2
+        rm -rf ./shadow-tls
+        rm -rf ./shadowsocks-libev
+        rm -rf ./shadowsocks-rust
+        rm -rf ./shadowsocksr-libev
+        rm -rf ./simple-obfs
+        rm -rf ./sing-box
+        # rm -rf ./ssocks
+        rm -rf ./tcping
+        # rm -rf ./trojan-go
+        rm -rf ./trojan-plus
+        # rm -rf ./trojan
+        rm -rf ./tuic-client
+        # rm -rf ./v2ray-core
+        rm -rf ./v2ray-geodata
+        # rm -rf ./v2ray-geoview
+        rm -rf ./v2ray-plugin
+        # rm -rf ./v2raya
+        rm -rf ./xray-core
+        rm -rf ./xray-plugin
+        
+        
+         
+        https://github.com/xiaorouji/openwrt-passwall-packages.git ./tmp
+        mv ./tmp/* ./
+        rm -rf ./tmp
+        
+    - name: Apply
+      run: |
+        Emoji=("🎉" "🤞" "✨" "🎁" "🎈" "🎄" "🎨" "💋" "🍓" "🍕" "🍉" "💐" "🌴" "🚀" "🛸" "🗽" "⛅" "🌈" "🔥" "⛄" "🐶" "🏅" "🦄" "🐤")
+        git add .
+        git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]} Sync $(date +%Y-%m-%d" "%H:%M:%S)"
+        for pkg in $(git diff-tree --no-commit-id --name-only HEAD); do
+          if [ "$(grep "PKG_RELEASE" $pkg/Makefile)" ]; then
+            sed -i "s/PKG_RELEASE:=.*/PKG_RELEASE:=$(git rev-list --count main $pkg)/" $pkg/Makefile || true
+          fi
+        done
+        git reset --soft HEAD^
+        git add .
+        git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]} Sync $(date +%Y-%m-%d" "%H:%M:%S)"
+        git push -f
