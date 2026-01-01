@@ -37,38 +37,7 @@ jobs:
     - name: Update
       run: |
 
-        #rm -rf ./brook
-        rm -rf ./chinadns-ng
-        rm -rf ./dns2socks
-        #rm -rf ./dns2socks-rust
-        #rm -rf ./dns2tcp
-        rm -rf ./geoview
-        #rm -rf ./gn
-        rm -rf ./hysteria
-        rm -rf ./ipt2socks
-        rm -rf ./microsocks
-        rm -rf ./naiveproxy
-        # rm -rf ./pdnsd-alt
-        # rm -rf ./redsocks2
-        rm -rf ./shadow-tls
-        rm -rf ./shadowsocks-libev
-        rm -rf ./shadowsocks-rust
-        rm -rf ./shadowsocksr-libev
-        rm -rf ./simple-obfs
-        rm -rf ./sing-box
-        # rm -rf ./ssocks
-        rm -rf ./tcping
-        # rm -rf ./trojan-go
-        rm -rf ./trojan-plus
-        # rm -rf ./trojan
-        rm -rf ./tuic-client
-        # rm -rf ./v2ray-core
-        rm -rf ./v2ray-geodata
-        # rm -rf ./v2ray-geoview
-        rm -rf ./v2ray-plugin
-        # rm -rf ./v2raya
-        rm -rf ./xray-core
-        rm -rf ./xray-plugin
+        rm -rf ./*
         
         
          
